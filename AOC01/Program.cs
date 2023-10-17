@@ -1,10 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 // #1
+using Shared;
+
 Console.WriteLine("AOC 01#1:");
 
 var frequency = 0;
-var path = Path.Combine(Directory.GetCurrentDirectory(), "Data/input.txt");
-var frequencyChanges = File.ReadAllText(path).Split("\r\n");
+var frequencyChanges = SHaredHelpers.ReadContentFromInputFile();
 
 foreach (var frequencyChange in frequencyChanges)
 {
