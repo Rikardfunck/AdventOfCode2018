@@ -1,6 +1,6 @@
 ﻿namespace Shared;
 
-public static class SHaredHelpers
+public static class SharedHelpers
 {
     public static string[] ReadContentFromInputFile()
     {
