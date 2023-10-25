@@ -5,7 +5,7 @@ using Shared;
 Console.WriteLine("AOC03 #1:");
 
 var dataEntries = SharedHelpers
-    .ReadContentFromInputFile()
+    .ReadContentAndSplitFromInputFile()
     .RawInputToListOfObjects();
 
 var squareMeters = Helpers.Create2DArray(1000, 1000)

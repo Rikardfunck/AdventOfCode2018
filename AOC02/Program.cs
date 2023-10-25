@@ -4,7 +4,7 @@ using Shared;
 // #1
 Console.WriteLine("AOC 02#1:");
 
-var lines = SharedHelpers.ReadContentFromInputFile();
+var lines = SharedHelpers.ReadContentAndSplitFromInputFile();
 var threeOccurances = 0;
 var twoOccurances = 0;
 

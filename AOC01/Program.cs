@@ -5,7 +5,7 @@ using Shared;
 Console.WriteLine("AOC 01#1:");
 
 var frequency = 0;
-var frequencyChanges = SharedHelpers.ReadContentFromInputFile();
+var frequencyChanges = SharedHelpers.ReadContentAndSplitFromInputFile();
 
 foreach (var frequencyChange in frequencyChanges)
 {

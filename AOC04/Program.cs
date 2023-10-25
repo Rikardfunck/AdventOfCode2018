@@ -4,7 +4,7 @@ using Shared;
 Console.WriteLine("AOC04 #1:");
 
 var input = SharedHelpers
-    .ReadContentFromInputFile()
+    .ReadContentAndSplitFromInputFile()
     .RawInputToListOfObjects();
 
 var sortedInput = input.OrderBy(s => s.Date).ToList();
