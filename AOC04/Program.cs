@@ -21,7 +21,7 @@ for (int i = 0; i < sortedInput.Count; i++)
 }
 
 var groupedSchedulesOnGuardId = sortedInput.GroupBy(item => item.GuardId).ToList();
-var guardAndSleptTime = new Dictionary<string, GuardData>();
+var guardsAndSleptTime = new List<GuardData>();
 
 foreach (var group in groupedSchedulesOnGuardId)
 {
@@ -44,21 +44,33 @@ foreach (var group in groupedSchedulesOnGuardId)
     }
 
     var mostSleptMinute = minutesSleeping.ToArray().GroupBy(minute => minute).OrderByDescending(s => s.Count()).FirstOrDefault();
-    guardAndSleptTime[group.Key] = mostSleptMinute == null ? new GuardData() : new GuardData
+    guardsAndSleptTime.Add(mostSleptMinute == null ? new GuardData() : new GuardData
     {
+        GuardId = group.Key,
         MinuteMostAsleep = mostSleptMinute.Key,
-        MinutesAsleep = minutesAsleep
-    };
+        MinutesAsleep = minutesAsleep,
+        MinuteMostAsleepCount = mostSleptMinute.Count()
+    });
 }
 
-var mostAsleepGuard = guardAndSleptTime.OrderByDescending(s => s.Value.MinutesAsleep).First();
+var mostAsleepGuard = guardsAndSleptTime.OrderByDescending(s => s.MinutesAsleep).First();
 
-Console.WriteLine($"The guard with ID: {mostAsleepGuard.Key} was asleep the most. He loved sleeping a little bit extra in minute {mostAsleepGuard.Value.MinuteMostAsleep}");
-Console.WriteLine($"Result: {int.Parse(mostAsleepGuard.Key) * mostAsleepGuard.Value.MinuteMostAsleep}");
+Console.WriteLine($"The guard with ID: {mostAsleepGuard.GuardId} was asleep the most. He loved sleeping a little bit extra in minute {mostAsleepGuard.MinuteMostAsleep}");
+Console.WriteLine($"Result: {int.Parse(mostAsleepGuard.GuardId) * mostAsleepGuard.MinuteMostAsleep}");
+Console.WriteLine("--------------------------------------------------------------------------------");
+
+// #2
+var guardMostFrequentlySleepingSameMinute = guardsAndSleptTime.OrderByDescending(s => s.MinuteMostAsleepCount).First();
+
+Console.WriteLine($"Result: {guardMostFrequentlySleepingSameMinute.MinuteMostAsleep * int.Parse(guardMostFrequentlySleepingSameMinute.GuardId)}");
 
 record GuardData
 {
+    public string GuardId { get; set; }
+
     public int MinuteMostAsleep { get; set; }
+
+    public int MinuteMostAsleepCount { get; set; }
 
     public int MinutesAsleep { get; set; }
 }
