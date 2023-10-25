@@ -60,6 +60,8 @@ Console.WriteLine($"Result: {int.Parse(mostAsleepGuard.GuardId) * mostAsleepGuar
 Console.WriteLine("--------------------------------------------------------------------------------");
 
 // #2
+Console.WriteLine("AOC04 #2:");
+
 var guardMostFrequentlySleepingSameMinute = guardsAndSleptTime.OrderByDescending(s => s.MinuteMostAsleepCount).First();
 
 Console.WriteLine($"Result: {guardMostFrequentlySleepingSameMinute.MinuteMostAsleep * int.Parse(guardMostFrequentlySleepingSameMinute.GuardId)}");
