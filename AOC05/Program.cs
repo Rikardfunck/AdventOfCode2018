@@ -5,6 +5,9 @@ Console.WriteLine("AOC05 #1:");
 var input = SharedHelpers.ReadContentAndSplitFromInputFile(separator: "").First();
 var wholeStringProcessed = false;
 
+
+
+
 // Is correct but need to optimize this as much as possible
 while (!wholeStringProcessed)
 {
@@ -20,7 +23,7 @@ while (!wholeStringProcessed)
                 if (Char.IsUpper(input[i]) != Char.IsUpper(input[i + 1]))
                 {
                     input = input.Remove(i, 2);
-                    Console.WriteLine($"String lenght: {input.Length}");
+                    Console.WriteLine($"String length: {input.Length}");
 
                     break;
                 }
@@ -35,6 +38,8 @@ while (!wholeStringProcessed)
 }
 
 Console.WriteLine($"Result: {input}");
+Console.WriteLine("-----------------------------------------");
+Console.WriteLine("AOC05 #2:");
 
 /*
  * Make a method which implements the removing logic
