@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using AOC04.Models;
 
 namespace AOC04;
 
@@ -20,7 +21,7 @@ public static class Extensions
         return dataEntries.AsEnumerable();
     }
 
-    private static DataEntry? ConvertToDataObject(this string rawData)
+    private static DataEntry ConvertToDataObject(this string rawData)
     {
         var data = rawData.Split("] ");
 
@@ -57,17 +58,4 @@ public static class Extensions
             BeginsShift = beginsShift
         };
     }
-}
-
-public record DataEntry
-{
-    public DateTime Date { get; set; }
-
-    public string GuardId { get; set; }
-
-    public bool WakesUp { get; set; }
-
-    public bool FallsAsleep { get; set; }
-
-    public bool BeginsShift { get; set; }
 }

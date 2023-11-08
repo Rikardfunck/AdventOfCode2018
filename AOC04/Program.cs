@@ -1,4 +1,5 @@
 ﻿using AOC04;
+using AOC04.Models;
 using Shared;
 
 Console.WriteLine("AOC04 #1:");
@@ -65,14 +66,3 @@ Console.WriteLine("AOC04 #2:");
 var guardMostFrequentlySleepingSameMinute = guardsAndSleptTime.OrderByDescending(s => s.MinuteMostAsleepCount).First();
 
 Console.WriteLine($"Result: {guardMostFrequentlySleepingSameMinute.MinuteMostAsleep * int.Parse(guardMostFrequentlySleepingSameMinute.GuardId)}");
-
-record GuardData
-{
-    public string GuardId { get; set; }
-
-    public int MinuteMostAsleep { get; set; }
-
-    public int MinuteMostAsleepCount { get; set; }
-
-    public int MinutesAsleep { get; set; }
-}
